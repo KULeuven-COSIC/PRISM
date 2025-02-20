@@ -1,6 +1,7 @@
 # PRISM
 
-This library is a C implementation of PRISM based on the code from SQIsign2D-West.
+This library is a C implementation of PRISM. The code is based on the
+implementation of SQIsign2D-West.
 
 ## Requirements
 
@@ -14,36 +15,34 @@ For a generic build
 
 - `mkdir -p build`
 - `cd build`
-- `cmake -DSQISIGN_BUILD_TYPE=ref ..`
+- `cmake ..`
 - `make`
 
-PRISM benchmarking for all security levels can be run with
+PRISM benchmarking for all security levels can be run with:
 
-`./src/primesign/ref/lvl1/test/sqisign_test_primesign_lvl1`
+`./PRISM_lvl1`
 
-where `lvl1` can be replaced with `lvl3` or `lvl5`.
+where `lvl1` can be replaced with `lvl3` or `lvl5` depending on the desired
+NIST level.
 
 ## Build options
 
 CMake build options can be specified with `-D<BUILD_OPTION>=<VALUE>`.
 
 An optimised executable can be built by running
-`cmake -DSQISIGN_BUILD_TYPE=<ref/broadwell> -DCMAKE_BUILD_TYPE=Release ..`
-
-### SQISIGN_BUILD_TYPE
-
-Specifies the build type for which SQIsign is built. The currently supported flags are:
-- `ref`, which builds the plain C reference implementation based on Fiat-Crypto.
-- `broadwell`, which builds an additional implementation with GF optimized code for the Intel Broadwell architecture.
+`cmake -DPRISM_BUILD_TYPE=<ref/broadwell> -DCMAKE_BUILD_TYPE=Release ..`
 
 ### ENABLE_GMP_BUILD
 
-If set to `OFF` (by default), the gmp library on the system is dynamically linked.
-If set to `ON`, a custom gmp library is linked, which is built as part of the overall build process.
+If set to `OFF` (by default), the gmp library on the system is dynamically
+linked.  If set to `ON`, a custom gmp library is linked, which is built as part
+of the overall build process.
 
 In the latter case, the following further options are available:
 - `ENABLE_GMP_STATIC`: Does static linking against gmp. The default is `OFF`.
-- `GMP_BUILD_CONFIG_ARGS`: Provides additional config arguments for the gmp build (for example `--disable-assembly`). By default, no config arguments are provided.
+- `GMP_BUILD_CONFIG_ARGS`: Provides additional config arguments for the gmp
+  build (for example `--disable-assembly`). By default, no config arguments are
+  provided.
 
 ### CMAKE_BUILD_TYPE
 
@@ -54,14 +53,29 @@ Can be used to specify special build types. The options are:
 - `ASAN`: Builds with AddressSanitizer memory error detector.
 - `MSAN`: Builds with MemorySanitizer detector for uninitialized reads.
 - `LSAN`: Builds with LeakSanitizer for run-time memory leak detection.
-- `UBSAN`: Builds with UndefinedBehaviorSanitizer for undefined behavior detection.
+- `UBSAN`: Builds with UndefinedBehaviorSanitizer for undefined behavior
+  detection.
 
-The default build type uses the flags `-O3 -Wstrict-prototypes -Wno-error=strict-prototypes -fvisibility=hidden -Wno-error=implicit-function-declaration -Wno-error=attributes`. (Notice that assertions remain enabled in this configuration, which harms performance.)
+The default build type uses the flags `-O3 -Wstrict-prototypes
+-Wno-error=strict-prototypes -fvisibility=hidden
+-Wno-error=implicit-function-declaration -Wno-error=attributes`. (Notice that
+assertions remain enabled in this configuration, which harms performance.)
+
+### PRISM_BUILD_TYPE
+
+Specifies the build type for which the underlying libraries are built. The
+currently supported flags are:
+- `ref`, which builds the plain C reference implementation based on Fiat-Crypto.
+- `broadwell`, which builds an additional implementation with GF optimized code
+  for the Intel Broadwell architecture.
 
 ## License
 
-SQIsign2d is licensed under Apache-2.0. See [LICENSE](LICENSE) and [NOTICE](NOTICE).
+PRISM is licensed under Apache-2.0. See [LICENSE](LICENSE) and
+[NOTICE](NOTICE).
 
+PRISM is based on the implementation of SQIsign2D-West. SQIsign2D-West is
+licensed under Apache-2.0.
 Third party code is used in some test and common code files:
 
 - `src/common/aes_c.c`; MIT: "Copyright (c) 2016 Thomas Pornin <pornin@bolet.org>"

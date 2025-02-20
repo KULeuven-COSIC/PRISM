@@ -40,7 +40,7 @@ add_subdirectory(ec)
 add_subdirectory(id2iso)
 add_subdirectory(hd)
 add_subdirectory(dim2id2iso)
-add_subdirectory(primesign)
+add_subdirectory(prism)
 
 FOREACH(SVARIANT ${SVARIANT_S})
     string(TOLOWER ${SVARIANT} SVARIANT_LOWER)
