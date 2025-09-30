@@ -26,9 +26,8 @@ class FixedDegreeIsogeny:
         P0, Q0 = precomps.basis
 
         # TODO: choice?
-        s = ceil(p/u +u).nbits() + 25
-        assert s<=e
-        #s = min(s,e)
+        s = ceil(p/u + u).nbits() + 25
+        s = min(s, self.e_target)
         a, b, c, d = FullrepresentInteger(u * (2 ** s - u), p, TrulyRandom = self.TrulyRandom)
 
         self.s = s
