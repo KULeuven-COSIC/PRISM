@@ -34,7 +34,7 @@ class PRISM_id:
             type(x).vector_space = cached_method(type(x).vector_space)
         self.id_torsion = params.id_torsion
         if not precomps:
-            precomps = Precomputations(p, 122, role = role)
+            precomps = Precomputations(p, role = role)
         self.precomps = precomps
 
     def keygen(self):
@@ -122,7 +122,6 @@ class PRISM_id:
         """
 
         precomps=self.precomps
-        # c = precomps.c
         e = precomps.e
 
         # Computing the isogeny associated with the ideal Isk
