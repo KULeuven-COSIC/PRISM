@@ -6,7 +6,7 @@ from sage.all import(
     matrix, vector,
     QuaternionAlgebra,
     randint, is_prime,
-    gcd
+    gcd, next_prime
 )
 
 from sqisign2d_west.endomorphisms import FullrepresentInteger, iota
@@ -34,7 +34,7 @@ class Precomputations:
         self.e = e
         self.D = D
         self.tate_exp = (p**2 - 1) // D
-        self.aux_integer = D #auxiliary integer for random_ideal_of_given_norm
+        self.aux_integer = next_prime(ZZ(1) << p.bit_length(), proof=False) #auxiliary integer for random_ideal_of_given_norm
 
         ## Isogenies:
         # Do we need extra available torsion for our isogenies?
