@@ -46,7 +46,7 @@ class PRISM_sign:
         for x in to_patch:
             type(x).vector_space = cached_method(type(x).vector_space)
         if not precomps:
-            precomps = Precomputations(p, 122, role = role, a = 'max')
+            precomps = Precomputations(p, role = role, a = 'max')
         self.precomps = precomps
 
     def keygen(self):
@@ -140,7 +140,6 @@ class PRISM_sign:
         """
 
         precomps=self.precomps
-        # c = precomps.c
         a = precomps.e
 
         # Computing the isogeny associated with the ideal Isk
