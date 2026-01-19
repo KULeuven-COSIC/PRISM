@@ -24,7 +24,6 @@ from montgomery_isogenies.kummer_line import KummerLine
 class Precomputations:
     def __init__(self, p, role='signer', a = 'max'):
         self.p = ZZ(p)
-        self.c = c
         e = (self.p + 1).valuation(2)
         if a == 'max':
             a = e
